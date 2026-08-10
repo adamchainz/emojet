@@ -4,7 +4,7 @@ requires = [ "maturin>=1.12,<2" ]
 
 [project]
 name = "emojet"
-version = "0.0.0"
+version = "1.0.0"
 description = "Convert, find, and count emoji in Python."
 readme = "README.rst"
 keywords = [
