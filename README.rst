@@ -23,11 +23,7 @@
 
 ----
 
-Emoji for Python, but fast.
-A Rust-powered library covering the core API of the |emoji package|__, running 10 to 100+ times faster:
-
-.. |emoji package| replace:: ``emoji`` package
-__ https://github.com/carpedm20/emoji/
+Convert, find, and count emoji in Python.
 
 .. code-block:: pycon
 
