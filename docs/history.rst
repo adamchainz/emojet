@@ -16,7 +16,7 @@ The ``schwifty`` package parses its registry JSON files and compiles a regular e
 
 swifter started in 2026 as a ground-up rewrite focused on speed: a Rust extension module, built with `PyO3 <https://pyo3.rs/>`__ and `maturin <https://www.maturin.rs/>`__, that compiles the IBAN registry data into its binary.
 
-swifter keeps the ``schwifty`` package's registry data and validation behaviour, with a simplified API - see `Differences from the schwifty package`_.
+swifter builds its data tables from the same original sources as the ``schwifty`` package - the SWIFT IBAN Registry, plus curated corrections - and keeps its validation behaviour, with a simplified API - see `Differences from the schwifty package`_.
 
 How it works
 ------------
@@ -82,7 +82,7 @@ Or run the script with plain Python in a virtual environment with both ``schwift
 Differences from the schwifty package
 -------------------------------------
 
-swifter keeps the ``schwifty`` package's IBAN registry data, class names, and validation behaviour, but simplifies the API:
+swifter matches the ``schwifty`` package's IBAN registry data, class names, and validation behaviour, but simplifies the API:
 
 * :class:`.IBAN` and :class:`.BIC` are not ``str`` subclasses.
   They still compare equal to strings, hash like their compact strings, support ``len()``, and convert with ``str()``, but string methods and slicing require going through :attr:`~swifter.IBAN.compact`.

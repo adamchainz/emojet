@@ -25,8 +25,7 @@ repos:
   - id: typos
     exclude: |
       (?x)^(
-        scripts/seeds/iban_registry\.json
-        |scripts/seeds/country_codes\.json
+        scripts/seeds/registry_overrides\.json
         |src/data\.rs
       )$
 - repo: https://github.com/tox-dev/pyproject-fmt
