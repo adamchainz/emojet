@@ -1,0 +1,12 @@
+*.egg-info/
+*.pyc
+*.so
+/.coverage
+/.coverage.*
+/.tox
+/build/
+/dist/
+/target/
+/.venv/
+/docs/_build/
+/.hypothesis/

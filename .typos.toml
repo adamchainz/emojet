@@ -1,0 +1,16 @@
+# Configuration file for 'typos' tool
+# https://github.com/crate-ci/typos
+
+[default]
+extend-ignore-re = [
+  # Single line ignore comments
+  "(?Rm)^.*(#|//)\\s*typos: ignore$",
+  # Multi-line ignore comments
+  "(?s)(#|//)\\s*typos: off.*?\\n\\s*(#|//)\\s*typos: on",
+  # IBAN and BIC examples contain arbitrary letter sequences
+  "\\b[A-Z]{2}\\d{2}[A-Z0-9]{8,30}\\b",
+]
+
+[default.extend-words]
+  # The Business Identifier Code acronym
+  BIC = "BIC"

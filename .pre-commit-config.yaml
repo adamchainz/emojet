@@ -1,0 +1,81 @@
+ci:
+  autoupdate_schedule: monthly
+  skip:
+  - cargo-clippy
+  - cargo-fmt
+
+default_language_version:
+  python: python3.14
+
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # frozen: v6.0.0
+  hooks:
+  - id: check-added-large-files
+  - id: check-case-conflict
+  - id: check-json
+  - id: check-merge-conflict
+  - id: check-symlinks
+  - id: check-toml
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+- repo: https://github.com/crate-ci/typos
+  rev: 12ffd4a04b4893ab75db66a59aaad2d996c3e982  # frozen: v1
+  hooks:
+  - id: typos
+    exclude: |
+      (?x)^(
+        scripts/seeds/iban_registry\.json
+        |scripts/seeds/country_codes\.json
+        |src/data\.rs
+      )$
+- repo: https://github.com/tox-dev/pyproject-fmt
+  rev: b82a24a520c5d496cb7b23b4e9b63537c280f51b  # frozen: v2.27.0
+  hooks:
+  - id: pyproject-fmt
+- repo: https://github.com/tox-dev/tox-ini-fmt
+  rev: 69e8f0ead1b1164c731b4a702896e3218feecf0b  # frozen: 1.8.1
+  hooks:
+  - id: tox-ini-fmt
+- repo: https://github.com/rstcheck/rstcheck
+  rev: 27a8027d6c6df787891a01b76e8298bac493fb58  # frozen: v6.3.0
+  hooks:
+  - id: rstcheck
+    additional_dependencies:
+    - sphinx==8.1.3
+    - tomli==2.0.1
+- repo: https://github.com/adamchainz/blacken-docs
+  rev: dda8db18cfc68df532abf33b185ecd12d5b7b326  # frozen: 1.20.0
+  hooks:
+  - id: blacken-docs
+    additional_dependencies:
+    - black==25.1.0
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: 7c55798a78262d14b2074abf623d8a992ebb70d4  # frozen: v0.16.2
+  hooks:
+    - id: ruff-check
+      args: [ --fix ]
+    - id: ruff-format
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: 41e691678310dfd3833f7ab4e180ddb014310356  # frozen: v2.3.0
+  hooks:
+  - id: mypy
+    additional_dependencies:
+    - hypothesis==6.165.3
+    - pytest==7.1.2
+    - schwifty==2026.7.3
+
+- repo: local
+  hooks:
+  - id: cargo-fmt
+    name: cargo fmt
+    entry: cargo fmt --
+    language: system
+    types: [rust]
+    pass_filenames: false
+  - id: cargo-clippy
+    name: cargo clippy
+    entry: cargo clippy -- -D warnings
+    language: system
+    types: [rust]
+    pass_filenames: false

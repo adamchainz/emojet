@@ -1,0 +1,154 @@
+[build-system]
+build-backend = "maturin"
+requires = [ "maturin>=1.12,<2" ]
+
+[project]
+name = "swifter"
+version = "1.0.0"
+description = "Validate and parse IBANs and BICs in Python."
+readme = "README.rst"
+keywords = [
+  "bank",
+  "bic",
+  "iban",
+  "sepa",
+  "swift",
+]
+license = "MIT"
+license-files = [ "LICENSE", "LICENSE-SCHWIFTY" ]
+authors = [
+  { name = "Adam Johnson", email = "me@adamj.eu" },
+]
+requires-python = ">=3.10"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Financial and Insurance Industry",
+  "Natural Language :: English",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Rust",
+  "Topic :: Office/Business :: Financial",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Typing :: Typed",
+]
+urls.Changelog = "https://swifter.readthedocs.io/en/latest/changelog.html"
+urls.Documentation = "https://swifter.readthedocs.io/"
+urls.Funding = "https://adamj.eu/books/"
+urls.Repository = "https://github.com/adamchainz/swifter"
+
+[dependency-groups]
+test = [
+  "coverage[toml]>=7.10",
+  "hypothesis",
+  "pytest>=8",
+  "pytest-randomly",
+  "schwifty==2026.7.3",
+]
+docs = [
+  "furo>=2024.8.6",
+  "sphinx>=7.4.7",
+  "sphinx-build-compatibility",
+  "sphinx-copybutton>=0.5.2",
+]
+
+[tool.maturin]
+module-name = "swifter._core"
+python-source = "src"
+include = [
+  "rust-toolchain.toml",
+]
+strip = true
+
+[tool.uv]
+sources.sphinx-build-compatibility = { git = "https://github.com/readthedocs/sphinx-build-compatibility", rev = "be6d3e3e75da85d99d9e70ca7cc8025771528b71" }
+
+[tool.ruff]
+lint.select = [
+  # flake8-bugbear
+  "B",
+  # flake8-comprehensions
+  "C4",
+  # pycodestyle
+  "E",
+  # Pyflakes errors
+  "F",
+  # isort
+  "I",
+  # flake8-simplify
+  "SIM",
+  # flake8-tidy-imports
+  "TID",
+  # pyupgrade
+  "UP",
+  # Pyflakes warnings
+  "W",
+]
+lint.ignore = [
+  # flake8-bugbear opinionated rules
+  "B9",
+  # line-too-long
+  "E501",
+  # suppressible-exception
+  "SIM105",
+  # if-else-block-instead-of-if-exp
+  "SIM108",
+]
+lint.extend-safe-fixes = [
+  # non-pep585-annotation
+  "UP006",
+]
+lint.isort.required-imports = [ "from __future__ import annotations" ]
+
+[tool.pyproject-fmt]
+max_supported_python = "3.14"
+
+[tool.mypy]
+mypy_path = "src/"
+namespace_packages = false
+warn_unreachable = true
+enable_error_code = [
+  "ignore-without-code",
+  "redundant-expr",
+  "truthy-bool",
+]
+strict = true
+overrides = [
+  { module = "tests.*", disable_error_code = [
+    # The tests intentionally pass some badly-typed values, and compare
+    # objects between schwifty and swifter, which have different types.
+    "arg-type",
+    "call-arg",
+    "comparison-overlap",
+    "return-value",
+    "union-attr",
+    "var-annotated",
+  ], allow_untyped_defs = true, allow_untyped_calls = true },
+]
+
+[tool.pytest]
+strict = true
+
+[tool.coverage]
+run.branch = true
+run.data_file = ".coverage/cov"
+run.parallel = true
+run.source = [
+  "swifter",
+  "tests",
+]
+paths.source = [
+  "src",
+  ".tox/**/site-packages",
+]
+report.show_missing = true
+report.skip_covered = true
+report.skip_empty = true
+
+[tool.rstcheck]
+report_level = "ERROR"

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="120" viewBox="0 0 240 120">
+  <g fill="none" stroke="#2563eb" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Bank pediment -->
+    <path d="M40 44 L120 16 L200 44 Z" fill="#2563eb" stroke="none"/>
+    <!-- Columns -->
+    <line x1="60" y1="56" x2="60" y2="92"/>
+    <line x1="100" y1="56" x2="100" y2="92"/>
+    <line x1="140" y1="56" x2="140" y2="92"/>
+    <line x1="180" y1="56" x2="180" y2="92"/>
+    <!-- Base -->
+    <line x1="44" y1="102" x2="196" y2="102"/>
+  </g>
+  <!-- Speed dashes -->
+  <g stroke="#f59e0b" stroke-width="6" stroke-linecap="round">
+    <line x1="14" y1="62" x2="34" y2="62"/>
+    <line x1="8" y1="76" x2="30" y2="76"/>
+    <line x1="14" y1="90" x2="34" y2="90"/>
+  </g>
+</svg>

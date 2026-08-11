@@ -1,0 +1,5 @@
+[alias]
+t = "test --no-default-features"
+
+[build]
+rustflags = ["-C", "force-frame-pointers=yes"]
