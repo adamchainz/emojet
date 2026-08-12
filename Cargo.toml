@@ -1,0 +1,20 @@
+[package]
+name = "countryry"
+version = "1.0.0"
+edition = "2021"
+readme = "README.rst"
+
+[dependencies]
+pyo3 = { version = "0.29.0" }
+unicode-normalization = "0.1.24"
+
+[features]
+default = ["extension-module"]
+extension-module = ["pyo3/extension-module"]
+
+[lib]
+name = "countryry_db"
+crate-type = ["cdylib", "rlib"]
+
+[profile.release]
+lto = true

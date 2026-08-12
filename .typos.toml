@@ -1,0 +1,17 @@
+# Configuration file for 'typos' tool
+# https://github.com/crate-ci/typos
+
+[default]
+extend-ignore-re = [
+  # Single line ignore comments
+  "(?Rm)^.*(#|//)\\s*typos: ignore$",
+  # Multi-line ignore comments
+  "(?s)(#|//)\\s*typos: off.*?\\n\\s*(#|//)\\s*typos: on"
+]
+
+[default.extend-words]
+  # The countryry package name, everywhere
+  countryry = "countryry"
+  # ISO 639-3 language codes, in documentation examples
+  ba = "ba"
+  deu = "deu"

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 72" width="240" height="72" role="img" aria-label="countryry">
+  <title>countryry</title>
+  <!-- Globe mark -->
+  <g transform="translate(36 36)">
+    <circle r="28" fill="#1e66d0"/>
+    <circle r="28" fill="none" stroke="#123c7a" stroke-width="3"/>
+    <!-- Meridians and parallels -->
+    <ellipse rx="12" ry="28" fill="none" stroke="#9cc4f5" stroke-width="2"/>
+    <ellipse rx="22" ry="28" fill="none" stroke="#9cc4f5" stroke-width="2"/>
+    <line x1="-28" y1="0" x2="28" y2="0" stroke="#9cc4f5" stroke-width="2"/>
+    <path d="M -25.5 -11.5 A 28 28 0 0 1 25.5 -11.5" fill="none" stroke="#9cc4f5" stroke-width="2"/>
+    <path d="M -25.5 11.5 A 28 28 0 0 0 25.5 11.5" fill="none" stroke="#9cc4f5" stroke-width="2"/>
+    <!-- Landmasses -->
+    <path d="M -18 -14 q 6 -8 14 -6 q 8 2 6 8 q -2 5 -9 5 q -9 1 -11 -7 z" fill="#3fae5a"/>
+    <path d="M 4 4 q 9 -3 13 3 q 3 6 -3 10 q -7 4 -11 -2 q -3 -6 1 -11 z" fill="#3fae5a"/>
+    <path d="M -16 8 q 5 -2 7 3 q 1 5 -4 7 q -6 1 -7 -4 q 0 -4 4 -6 z" fill="#3fae5a"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="76" y="47" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="bold" fill="#123c7a">countryry</text>
+</svg>
