@@ -1,0 +1,19 @@
+[package]
+name = "pslr"
+version = "0.0.0"
+edition = "2021"
+readme = "README.rst"
+
+[dependencies]
+pyo3 = { version = "0.29.0" }
+
+[features]
+default = ["extension-module"]
+extension-module = ["pyo3/extension-module"]
+
+[lib]
+name = "pslr_lookup"
+crate-type = ["cdylib", "rlib"]
+
+[profile.release]
+lto = true
