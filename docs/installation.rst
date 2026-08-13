@@ -4,7 +4,7 @@ Installation
 Requirements
 ------------
 
-Python 3.10 to 3.14 supported, including free-threaded builds.
+Python 3.10 to 3.15 supported. including free-threaded builds.
 
 Installation
 ------------
