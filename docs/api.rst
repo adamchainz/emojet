@@ -20,7 +20,7 @@ Strings must be well-formed Unicode: lone surrogates raise :exc:`UnicodeEncodeEr
 Conversion
 ----------
 
-.. function:: emojize(string, *, language="en", delimiters=(":", ":"), variant=None)
+.. function:: emojize(string: str, *, language: str = "en", delimiters: tuple[str, str] = (":", ":"), variant: Literal["text_type", "emoji_type"] | None = None) -> str
 
    Return *string* with delimited emoji names replaced by the emoji themselves.
    Unknown names are left unchanged.
@@ -53,7 +53,7 @@ Conversion
        >>> emojet.emojize(":red_heart:", variant="emoji_type")
        '❤️'
 
-.. function:: demojize(string, *, language="en", delimiters=(":", ":"))
+.. function:: demojize(string: str, *, language: str = "en", delimiters: tuple[str, str] = (":", ":")) -> str
 
    Return *string* with emoji replaced by their delimited names.
    The inverse of :func:`emojize`: emojizing the result returns the original string.
@@ -77,7 +77,7 @@ Conversion
        >>> emojet.demojize("🇫🇷")
        ':France:'
 
-.. function:: replace_emoji(string, replace="")
+.. function:: replace_emoji(string: str, replace: str | Callable[[str], str] | None = None) -> str
 
    Return *string* with emoji replaced.
    ``replace`` may be a string, or a callable that receives each emoji and returns its replacement.
@@ -94,7 +94,7 @@ Conversion
 Searching
 ---------
 
-.. function:: emoji_list(string)
+.. function:: emoji_list(string: str) -> list[dict[str, Any]]
 
    Return a list of dicts describing each emoji in *string*, with its start and end indexes.
 
@@ -103,7 +103,7 @@ Searching
        >>> emojet.emoji_list("Unicode is tricky 😯, very tricky 🤯")
        [{'emoji': '😯', 'match_start': 18, 'match_end': 19}, {'emoji': '🤯', 'match_start': 33, 'match_end': 34}]
 
-.. function:: distinct_emoji_list(string)
+.. function:: distinct_emoji_list(string: str) -> list[str]
 
    Return the distinct emoji in *string*, in order of first appearance.
 
@@ -112,7 +112,7 @@ Searching
        >>> emojet.distinct_emoji_list("Some emoji repeat 😁😁👍😁")
        ['😁', '👍']
 
-.. function:: emoji_count(string, *, unique=False)
+.. function:: emoji_count(string: str, *, unique: bool = False) -> int
 
    Return the number of emoji in *string*.
    Pass ``unique=True`` to count each distinct emoji once.
@@ -124,7 +124,7 @@ Searching
        >>> emojet.emoji_count("Some emoji repeat 😁😁👍😁", unique=True)
        2
 
-.. function:: is_emoji(string)
+.. function:: is_emoji(string: str) -> bool
 
    Return whether *string* is exactly one emoji.
 
@@ -135,7 +135,7 @@ Searching
        >>> emojet.is_emoji("👍👍")
        False
 
-.. function:: purely_emoji(string)
+.. function:: purely_emoji(string: str) -> bool
 
    Return whether *string* consists only of emoji.
 
@@ -149,7 +149,7 @@ Searching
 Lookup
 ------
 
-.. function:: version(string)
+.. function:: version(string: str) -> float
 
    Return the Unicode emoji version of the first emoji or delimited English name in *string*, as a float.
    Versions match those in Unicode's |emoji-test.txt|__, where 0.6 and 0.7 mark emoji that predate the versioned releases.
@@ -167,7 +167,7 @@ Lookup
        >>> emojet.version(":thumbs_up:")
        0.6
 
-.. function:: get_emoji_by_name(name, *, language="en")
+.. function:: get_emoji_by_name(name: str, *, language: str = "en") -> str | None
 
    Return the emoji for an exact delimited name, or :obj:`None` if the name is unknown.
 
@@ -180,7 +180,7 @@ Lookup
        >>> emojet.get_emoji_by_name(":not_a_real_name:") is None
        True
 
-.. function:: emoji_status(string)
+.. function:: emoji_status(string: str) -> str
 
    Return the Unicode qualification status of an emoji: ``"component"``, ``"fully_qualified"``, ``"minimally_qualified"``, or ``"unqualified"``.
    Raises :exc:`ValueError` if *string* is not exactly one emoji.
