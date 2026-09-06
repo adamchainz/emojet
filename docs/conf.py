@@ -34,7 +34,6 @@ release = version
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "sphinx.ext.intersphinx",
     "sphinx_copybutton",
 ]
 if os.environ.get("READTHEDOCS") == "True":
@@ -79,9 +78,3 @@ latex_documents = [
         "manual",
     ),
 ]
-
-# -- Options for Intersphinx -------------------------------------------
-
-intersphinx_mapping = {
-    "python": ("https://docs.python.org/3/", None),
-}
