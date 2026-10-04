@@ -6,9 +6,8 @@
 from __future__ import annotations
 
 import os
-from pathlib import Path
-
 import tomllib
+from pathlib import Path
 
 here = Path(__file__).parent.resolve()
 
